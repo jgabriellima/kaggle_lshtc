@@ -1,5 +1,5 @@
 # SETTINGS
-ROOT_DIR = '/Users/ling/kaggle/lshtc/'
+ROOT_DIR = '/Users/ling/lshtc/'
 
 from sklearn.datasets import load_svmlight_file
 from sklearn import preprocessing
@@ -21,8 +21,10 @@ x = lb.fit_transform(data[1])
 
 # Multi-label classifier learning
 classif = OneVsRestClassifier(KNeighborsClassifier())
-classif.fit(data[0], transformed)
-prediction = classif.predict(data[0])
+classif.fit(data[0], x)
+
+# Testing if plain works for now - predict on training set
+prediction = classif.predict(x)
 
 # Scoring - need to finish
 data[0].toarray()
